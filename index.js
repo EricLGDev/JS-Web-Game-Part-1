@@ -18,15 +18,20 @@ function newImage(url, left, bottom){
 
 function newItem(url, left, bottom){
     let item = newImage(url, left, bottom)
-
-    item.addEventListener('dblclick', () => {
+    item.addEventListener('click', function(){
         item.remove()
+        let inventoryItem = document.createElement('img')
+        inventoryItem.src = url
+        inventory.append(inventoryItem)
     })
 }
+
 
 let horizon = window.innerHeight / 1.75
 let heightOfSky = window.innerHeight-horizon
 let heightOfGrass = horizon
+
+const inventory = newInventory()
 
 function newInventory(){
     let inventory = document.createElement('div')
@@ -43,9 +48,8 @@ function newInventory(){
     inventory.style.border = '2px solid black';
     inventory.style.backgroundColor = 'brown';
     document.body.append(inventory)
+    return inventory
 }
-
-newInventory()
 
 tile('assets/sky.png', 0, horizon, window.innerWidth/100, heightOfSky/100)
 tile('assets/grass.png', 0, 0, window.innerWidth/100, heightOfGrass/100)
