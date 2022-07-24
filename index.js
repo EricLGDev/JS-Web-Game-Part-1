@@ -17,16 +17,35 @@ function newImage(url, left, bottom){
 }
 
 function newItem(url, left, bottom){
-    let object = newImage(url, left, bottom)
+    let item = newImage(url, left, bottom)
 
-    object.addEventListener('dblclick', () => {
-        object.remove()
+    item.addEventListener('dblclick', () => {
+        item.remove()
     })
 }
 
 let horizon = window.innerHeight / 1.75
 let heightOfSky = window.innerHeight-horizon
 let heightOfGrass = horizon
+
+function newInventory(){
+    let inventory = document.createElement('div')
+    inventory.style.position = 'fixed';
+    inventory.style.zIndex = '1'
+    inventory.style.bottom = '0px';
+    inventory.style.left = '0px';
+    inventory.style.width = '100%';
+    inventory.style.height = '100px';
+    inventory.style.display = 'flex';
+    inventory.style.flexDirection = 'row';
+    inventory.style.alignItems = 'center';
+    inventory.style.justifyContent = 'space-evenly';
+    inventory.style.border = '2px solid black';
+    inventory.style.backgroundColor = 'brown';
+    document.body.append(inventory)
+}
+
+newInventory()
 
 tile('assets/sky.png', 0, horizon, window.innerWidth/100, heightOfSky/100)
 tile('assets/grass.png', 0, 0, window.innerWidth/100, heightOfGrass/100)
